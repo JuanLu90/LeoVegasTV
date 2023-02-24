@@ -1,12 +1,18 @@
-import React from 'react';
+import React from 'react'
 
 // COMPONENTS
-import Layout from "./components/Layout/Layout";
+import Layout from './components/layout/layout.component'
+import { AppContextProvider } from './context/app.context'
+import MoviesList from './views/movies-list/movies-list.component'
 
-function App() {
+const App: React.FC = (): React.ReactElement => {
   return (
-    <Layout />
-  );
+    <AppContextProvider>
+      <Layout>
+        <MoviesList />
+      </Layout>
+    </AppContextProvider>
+  )
 }
 
-export default App;
+export default App

@@ -1,24 +1,22 @@
 // DEPENDENCIES
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 100vh;
-
   > div {
     width: 100%;
   }
 
   .nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     height: 45px;
     background-color: blue;
+    z-index: 1;
   }
 
   .main {
-    height: 100%;
-    margin-top: 45px;
     background-color: green;
+    overflow-y: auto;
   }
 
   .footer {
