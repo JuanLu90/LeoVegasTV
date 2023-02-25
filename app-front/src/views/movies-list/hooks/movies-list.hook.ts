@@ -1,30 +1,49 @@
 // DEPENDENCIES
 import { useState, useEffect } from 'react';
-// CONTEXT
-// import { useAppContext } from '../../../context/app.context'
+
 // HANDLERS
 import MoviesListHandlers from '../handlers/movies-list.handlers';
 
 const useMoviesListHook = (): any => {
+  const initialStateFilterInfo = {
+    page: 1,
+    search: '',
+  };
+
   const [moviesList, setMoviesList] = useState<any[] | []>([]);
+  const [filterInfo, setFilterInfo] = useState<any | {}>(
+    initialStateFilterInfo,
+  );
   const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [filteredPodcastList, setFilteredPodcastList] = useState<any[] | []>(
+    [],
+  );
   const [isFiltering, setIsFiltering] = useState<boolean>(false);
 
   useEffect(() => {
-    handleGetMoviesList();
-  }, []);
+    if (!filterInfo.search) handleGetMoviesList(filterInfo.page);
+    else handleFilterMoviestList(filterInfo.search, filterInfo.page);
+  }, [filterInfo.search, filterInfo.page]);
 
-  const { handleGetMoviesList } = MoviesListHandlers({
+  const { handleGetMoviesList, handleFilterMoviestList } = MoviesListHandlers({
     setMoviesList,
     setIsFetching,
+    setFilteredPodcastList,
     setIsFiltering,
     moviesList,
+    setFilterInfo,
+    filterInfo,
   });
 
   return {
+    handleFilterMoviestList,
     moviesList,
     isFetching,
+    filteredPodcastList,
     isFiltering,
+    handleGetMoviesList,
+    setFilterInfo,
+    filterInfo,
   };
 };
 

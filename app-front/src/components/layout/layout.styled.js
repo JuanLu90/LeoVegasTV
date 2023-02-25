@@ -15,13 +15,6 @@ export const Wrapper = styled.div`
   }
 
   .main {
-    background-color: green;
     overflow-y: auto;
-  }
-
-  .footer {
-    position: fixed;
-    bottom: 0;
-    background-color: yellow;
   }
 `;
