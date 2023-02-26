@@ -22,7 +22,7 @@ export const StyledLoader = styled.div.attrs({
   width: 50px;
   height: 50px;
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
+  border-top: 8px solid #5d1d1b;
   border-radius: 50%;
   animation: ${rotate} 1s linear infinite;
   z-index: 999;

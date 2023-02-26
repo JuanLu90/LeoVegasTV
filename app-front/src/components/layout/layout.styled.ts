@@ -9,12 +9,6 @@ export const Wrapper = styled.div`
   .nav {
     position: sticky;
     top: 0;
-    height: 45px;
-    background-color: blue;
     z-index: 1;
-  }
-
-  .main {
-    overflow-y: auto;
   }
 `;
