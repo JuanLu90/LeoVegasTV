@@ -1,7 +1,14 @@
+// RERSOLVERS
 import {
   getMoviesListResolver,
   getMoviesListFilterResolver,
 } from '../resolvers/movies-list.resolver';
+
+// INTERFACES
+// eslint-disable-next-line no-unused-vars
+import { MovieListHandlersType } from './interfaces/movies-list.handlers.interface';
+// eslint-disable-next-line no-unused-vars
+import { MovieListHandlersReturnType } from './interfaces/movies-list.handlers.interface';
 
 const getMoviesListHandler = async ({
   setMoviesList,
@@ -71,15 +78,15 @@ const MoviesListHandlers = ({
   setMoviesList,
   setIsFetching,
   setFilterInfo,
-}: any): any => ({
-  handleGetMoviesList: (page: any) =>
+}: MovieListHandlersType): MovieListHandlersReturnType => ({
+  handleGetMoviesList: (page: number) =>
     getMoviesListHandler({
       setMoviesList,
       setIsFetching,
       setFilterInfo,
       page,
     }),
-  handleFilterMoviestList: (value: any, page: any) =>
+  handleFilterMoviestList: (value: string, page: number) =>
     getMoviesListFilterHandler({
       setMoviesList,
       setIsFetching,

@@ -59,7 +59,7 @@ const Card: React.FC<any> = (props) => {
 
   return (
     <CardWrapper>
-      <ImageContainer onClick={() => console.log('Redirect to details')}>
+      <ImageContainer>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}

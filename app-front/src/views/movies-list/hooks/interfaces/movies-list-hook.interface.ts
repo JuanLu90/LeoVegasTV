@@ -3,7 +3,7 @@ import { MovieListItemType } from '../../../../interfaces/MovieListItem.interfac
 import { FilterListItemType } from '../../../../interfaces/FilterListItem.interface';
 
 export interface MoviesListHookReturnType {
-  handleFilterMoviestList: (event: React.FormEvent<HTMLInputElement>) => void;
+  handleFilterMoviestList: (value: string, page: number) => void;
   moviesList: MovieListItemType[];
   isFetching: boolean;
   handleGetMoviesList: (value: number) => void;
