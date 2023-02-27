@@ -19,8 +19,6 @@ const App: React.FC = (): React.ReactElement => {
             <Route path="/" element={<MoviesList />} />
             <Route path="/favorites" element={<FavoritesList />} />
             <Route path="/watchlater" element={<WatchLaterList />} />
-            {/*  <Route path="/podcast/:id/episode/:episodeId" element={<EpisodeDetails />} />
-            <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
         </Layout>
       </AppContextProvider>

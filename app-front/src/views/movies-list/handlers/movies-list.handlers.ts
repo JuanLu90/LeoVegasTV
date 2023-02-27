@@ -10,7 +10,9 @@ const getMoviesListHandler = async ({
   page,
 }: any): Promise<any> => {
   setIsFetching(true);
+
   const response = await getMoviesListResolver(page);
+
   if (response) {
     const { results, page, total_pages, total_results } = response;
 
