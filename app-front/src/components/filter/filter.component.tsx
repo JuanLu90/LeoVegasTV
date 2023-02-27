@@ -1,11 +1,14 @@
 // DEPENDENCIES
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // STYLED-COMPONENTS
 import { FilterSearch, FilterPages, ItemsWrapper } from './filter.styled';
 
 const Filter: React.FC<any> = (props) => {
   const { onChangePage, handleChange, filterInfo } = props;
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -37,6 +40,10 @@ const Filter: React.FC<any> = (props) => {
         </FilterPages>
       </FilterSearch>
       <ItemsWrapper>
+        <div>
+          <button onClick={() => navigate('/favorites')}>Favorites</button>
+          <button onClick={() => navigate('/watchlater')}>Watch Later</button>
+        </div>
         <span>
           Items: {20 * filterInfo.page} of {filterInfo.total_results}
         </span>

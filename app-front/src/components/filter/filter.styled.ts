@@ -15,5 +15,9 @@ export const FilterPages = styled.div`
 
 export const ItemsWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
+  > div button {
+    margin-right: 10px;
+  }
 `;

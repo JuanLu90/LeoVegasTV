@@ -4,6 +4,9 @@ import React from 'react';
 // STYLED-COMPONENTS
 import { CardWrapper, ImageContainer, Vote, Star, Watch } from './card.styled';
 
+// CONTEXT
+import { useAppContext } from '../../context/app.context';
+
 // IMAGES
 import StarIcon from '../../assets/images/star.png';
 import StarSavedIcon from '../../assets/images/star-saved.png';
@@ -12,23 +15,24 @@ import WatchSavedIcon from '../../assets/images/watch-later-saved.png';
 
 // FUNCTION
 const Card: React.FC<any> = (props) => {
+  const { movie } = props;
+
   const {
-    movie,
     favouriteMoviesListStoraged,
     setFavouriteMoviesListStoraged,
     watchLaterMoviesListStoraged,
     setWatchLaterMoviesListStoraged,
-  } = props;
+  } = useAppContext();
 
   const findFavoriteFn = () =>
-    favouriteMoviesListStoraged.some((x: any) => x == movie.id);
+    favouriteMoviesListStoraged.some((x: any) => x.id == movie.id);
 
   const findWatchLaterFn = () =>
-    watchLaterMoviesListStoraged.some((x: any) => x == movie.id);
+    watchLaterMoviesListStoraged.some((x: any) => x.id == movie.id);
 
   const handleOnClickFav = (id: any) => {
     let copyArr = favouriteMoviesListStoraged;
-    const matchMovie = copyArr.findIndex((z: any) => z == id);
+    const matchMovie = copyArr.findIndex((z: any) => z.id == id);
 
     if (matchMovie !== -1) {
       copyArr.splice(matchMovie, 1);
@@ -36,12 +40,12 @@ const Card: React.FC<any> = (props) => {
     } else
       return setFavouriteMoviesListStoraged((prevArr: any) => [
         ...prevArr,
-        movie.id,
+        movie,
       ]);
   };
   const handleOnClickWatch = (id: any) => {
     let copyArr = watchLaterMoviesListStoraged;
-    const matchMovie = copyArr.findIndex((z: any) => z == id);
+    const matchMovie = copyArr.findIndex((z: any) => z.id == id);
 
     if (matchMovie !== -1) {
       copyArr.splice(matchMovie, 1);
@@ -49,7 +53,7 @@ const Card: React.FC<any> = (props) => {
     } else
       return setWatchLaterMoviesListStoraged((prevArr: any) => [
         ...prevArr,
-        movie.id,
+        movie,
       ]);
   };
 

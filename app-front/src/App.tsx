@@ -1,18 +1,31 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// CONTEXT
+import { AppContextProvider } from './context/app.context';
 
 // COMPONENTS
-import Layout from './components/layout/layout.component'
-import { AppContextProvider } from './context/app.context'
-import MoviesList from './views/movies-list/movies-list.component'
+import Layout from './components/layout/layout.component';
+import MoviesList from './views/movies-list/movies-list.component';
+import FavoritesList from './views/favorites-list/favorites-list.component';
+import WatchLaterList from './views/watchLater-list/watchLater-list.component';
 
 const App: React.FC = (): React.ReactElement => {
   return (
-    <AppContextProvider>
-      <Layout>
-        <MoviesList />
-      </Layout>
-    </AppContextProvider>
-  )
-}
+    <BrowserRouter>
+      <AppContextProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<MoviesList />} />
+            <Route path="/favorites" element={<FavoritesList />} />
+            <Route path="/watchlater" element={<WatchLaterList />} />
+            {/*  <Route path="/podcast/:id/episode/:episodeId" element={<EpisodeDetails />} />
+            <Route path="*" element={<Navigate to="/" />} /> */}
+          </Routes>
+        </Layout>
+      </AppContextProvider>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
