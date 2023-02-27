@@ -4,14 +4,20 @@ import { useState, useEffect } from 'react';
 // HANDLERS
 import MoviesListHandlers from '../handlers/movies-list.handlers';
 
-const useMoviesListHook = (): any => {
+// INTERFACES
+// eslint-disable-next-line no-unused-vars
+import { MoviesListHookReturnType } from './interfaces/movies-list-hook.interface';
+import { MovieListItemType } from '../../../interfaces/MovieListItem.interface';
+import { FilterListItemType } from '../../../interfaces/FilterListItem.interface';
+
+const useMoviesListHook = (): MoviesListHookReturnType => {
   const initialStateFilterInfo = {
     page: 1,
     search: '',
   };
 
-  const [moviesList, setMoviesList] = useState<any[] | []>([]);
-  const [filterInfo, setFilterInfo] = useState<any | {}>(
+  const [moviesList, setMoviesList] = useState<MovieListItemType[] | []>([]);
+  const [filterInfo, setFilterInfo] = useState<FilterListItemType>(
     initialStateFilterInfo,
   );
   const [isFetching, setIsFetching] = useState<boolean>(false);

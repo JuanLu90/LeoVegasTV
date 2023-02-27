@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import { useState, useEffect } from 'react';
 
-export const useLocalStorage = (key: string, initialValue: any) => {
+export const useLocalStorage = (key: string, initialValue: []) => {
   const [arrMovies, setArrMovies] = useState(() => {
     const item = window.localStorage.getItem(key);
     if (item) {

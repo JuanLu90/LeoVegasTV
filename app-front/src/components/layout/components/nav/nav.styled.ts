@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const NavWrapper = styled.div`
+export const NavWrapper = styled.div.attrs({
+  'data-testid': 'nav-component',
+})`
   display: flex;
   justify-content: space-between;
   align-items: center;

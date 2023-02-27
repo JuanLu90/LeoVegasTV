@@ -2,7 +2,7 @@
 import {
   getMoviesListService,
   getMoviesListFilterService,
-} from '../services/movies-list-services';
+} from '../services/movies-list.services';
 
 const getMoviesListResolver = async (page: any): Promise<any> => {
   const response = await getMoviesListService(page);

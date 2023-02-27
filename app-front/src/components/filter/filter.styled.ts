@@ -1,7 +1,9 @@
 // DEPENDENCIES
 import styled from 'styled-components';
 
-export const FilterSearch = styled.div`
+export const FilterSearch = styled.div.attrs({
+  'data-testid': 'filter-component',
+})`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;

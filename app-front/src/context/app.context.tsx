@@ -5,9 +5,9 @@ import React, { createContext, useContext } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 // INTERFACES
-// import { AppContextPropsType } from "./interfaces/app.context.interface";
+import { AppContextPropsType } from './interfaces/app.context.interface';
 
-export const AppContext = createContext<any>({
+export const AppContext = createContext<AppContextPropsType>({
   favouriteMoviesListStoraged: [],
   setFavouriteMoviesListStoraged: () => {},
   watchLaterMoviesListStoraged: [],

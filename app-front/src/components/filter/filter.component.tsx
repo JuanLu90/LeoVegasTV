@@ -44,9 +44,7 @@ const Filter: React.FC<any> = (props) => {
           <button onClick={() => navigate('/favorites')}>Favorites</button>
           <button onClick={() => navigate('/watchlater')}>Watch Later</button>
         </div>
-        <span>
-          Items: {20 * filterInfo.page} of {filterInfo.total_results}
-        </span>
+        <span>Total Items: {filterInfo.total_results}</span>
       </ItemsWrapper>
     </div>
   );

@@ -12,6 +12,12 @@ import useMoviesListHook from './hooks/movies-list.hook';
 // STYLED-COMPONENTS
 import { MoviesListWrapper, MoviesResultWrapper } from './movies-list.styled';
 
+// INTERFACES
+// eslint-disable-next-line no-unused-vars
+import { MovieListItemType } from '../../interfaces/MovieListItem.interface';
+// eslint-disable-next-line no-unused-vars
+import { FilterListItemType } from '../../interfaces/FilterListItem.interface';
+
 const MoviesList: React.FC = (): React.ReactElement => {
   const {
     moviesList,
@@ -25,9 +31,9 @@ const MoviesList: React.FC = (): React.ReactElement => {
     setFilterInfo((prevState: any) => ({ ...prevState, page: value }));
   };
 
-  const handleChange = (value: any) => {
+  const handleChange = (value: string) => {
     if (value)
-      setFilterInfo((prevState: any) => ({
+      setFilterInfo((prevState: FilterListItemType) => ({
         ...prevState,
         page: 1,
         search: value,
@@ -46,7 +52,7 @@ const MoviesList: React.FC = (): React.ReactElement => {
 
       {!isFetching && moviesList.length > 0 ? (
         <MoviesResultWrapper>
-          {moviesList.map((movie: any) => (
+          {moviesList.map((movie: MovieListItemType) => (
             <Card key={movie.id} movie={movie} />
           ))}
         </MoviesResultWrapper>
