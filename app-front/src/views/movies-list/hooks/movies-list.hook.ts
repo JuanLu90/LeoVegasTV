@@ -16,8 +16,6 @@ const useMoviesListHook = (): any => {
   );
   const [isFetching, setIsFetching] = useState<boolean>(false);
 
-  const [isFiltering, setIsFiltering] = useState<boolean>(false);
-
   useEffect(() => {
     if (!filterInfo.search) handleGetMoviesList(filterInfo.page);
     else handleFilterMoviestList(filterInfo.search, filterInfo.page);
@@ -26,7 +24,6 @@ const useMoviesListHook = (): any => {
   const { handleGetMoviesList, handleFilterMoviestList } = MoviesListHandlers({
     setMoviesList,
     setIsFetching,
-    setIsFiltering,
     moviesList,
     setFilterInfo,
     filterInfo,
@@ -36,7 +33,6 @@ const useMoviesListHook = (): any => {
     handleFilterMoviestList,
     moviesList,
     isFetching,
-    isFiltering,
     handleGetMoviesList,
     setFilterInfo,
     filterInfo,

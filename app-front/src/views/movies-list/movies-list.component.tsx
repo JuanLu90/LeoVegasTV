@@ -2,15 +2,18 @@
 import React from 'react';
 
 // COMPONENTS
-import CardInfo from '../../components/card/card.component';
+import Card from '../../components/card/card.component';
 import Loader from '../../components/loader/loader.component';
 import Filter from '../../components/filter/filter.component';
 
-// STYLED-COMPONENTS
-import { MoviesListWrapper, MoviesResultWrapper } from './movies-list.styled';
-
 // HOOKS
 import useMoviesListHook from './hooks/movies-list.hook';
+
+// CONTEXT
+import { useAppContext } from '../../context/app.context';
+
+// STYLED-COMPONENTS
+import { MoviesListWrapper, MoviesResultWrapper } from './movies-list.styled';
 
 const MoviesList: React.FC = (): React.ReactElement => {
   const {
@@ -35,6 +38,13 @@ const MoviesList: React.FC = (): React.ReactElement => {
     else handleGetMoviesList(filterInfo.page);
   };
 
+  const {
+    favouriteMoviesListStoraged,
+    setFavouriteMoviesListStoraged,
+    watchLaterMoviesListStoraged,
+    setWatchLaterMoviesListStoraged,
+  } = useAppContext();
+
   return (
     <MoviesListWrapper>
       <Filter
@@ -47,7 +57,14 @@ const MoviesList: React.FC = (): React.ReactElement => {
       {!isFetching && moviesList.length > 0 ? (
         <MoviesResultWrapper>
           {moviesList.map((movie: any) => (
-            <CardInfo key={movie.id} movie={movie} />
+            <Card
+              key={movie.id}
+              movie={movie}
+              favouriteMoviesListStoraged={favouriteMoviesListStoraged}
+              setFavouriteMoviesListStoraged={setFavouriteMoviesListStoraged}
+              watchLaterMoviesListStoraged={watchLaterMoviesListStoraged}
+              setWatchLaterMoviesListStoraged={setWatchLaterMoviesListStoraged}
+            />
           ))}
         </MoviesResultWrapper>
       ) : (

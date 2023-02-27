@@ -6,6 +6,7 @@ export const CardWrapper = styled.div`
   margin: 15px;
   box-shadow: 0 0 10px 5px lightgrey;
   border-radius: 7px;
+
   overflow: hidden;
   cursor: pointer;
 
@@ -31,6 +32,7 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
+    border-radius: 7px;
   }
 `;
 
@@ -51,7 +53,7 @@ export const CardInfo = styled.div`
   }
 `;
 
-export const CardVote = styled.span`
+export const Vote = styled.span`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -60,4 +62,20 @@ export const CardVote = styled.span`
   border-radius: 10px;
   font-size: 0.9rem;
   font-weight: 700;
+`;
+
+export const Star = styled.img`
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  padding: 3px 7px;
+  height: 25px;
+`;
+
+export const Watch = styled.img`
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  padding: 3px 7px;
+  height: 25px;
 `;
