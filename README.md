@@ -27,7 +27,7 @@ The app has been structured by a **Nav** and a **Body**.
 
 The nav has the LeoVegas Icon, clicking navigate to main view.
 
-The main view displays a list of movies in cards, which shows us the cover, score average, and two buttons: A star for saved in the movie in a favorites list, and a clock to save in a watch later list.
+The main view displays a list of movies in cards, which shows us the cover, score average, and two buttons: A star for saved in the movie in a favorites list, and a clock to save in a watch later list. Both list are saved separately in the localstorage.
 
 At the top there is a filter which allows us filter movies by title, includes pagination.
 Just below we have a couple of buttons to navigate to the saved lists.
