@@ -31,12 +31,13 @@ const Card: React.FC<any> = (props) => {
     watchLaterMoviesListStoraged.some((x: any) => x.id == movie.id);
 
   const handleOnClickFav = (id: any) => {
-    let copyArr = favouriteMoviesListStoraged;
-    const matchMovie = copyArr.findIndex((z: any) => z.id == id);
+    const matchMovie = favouriteMoviesListStoraged.findIndex(
+      (z: any) => z.id == id,
+    );
 
     if (matchMovie !== -1) {
-      copyArr.splice(matchMovie, 1);
-      return setFavouriteMoviesListStoraged([...copyArr]);
+      favouriteMoviesListStoraged.splice(matchMovie, 1);
+      return setFavouriteMoviesListStoraged([...favouriteMoviesListStoraged]);
     } else
       return setFavouriteMoviesListStoraged((prevArr: any) => [
         ...prevArr,
@@ -44,12 +45,13 @@ const Card: React.FC<any> = (props) => {
       ]);
   };
   const handleOnClickWatch = (id: any) => {
-    let copyArr = watchLaterMoviesListStoraged;
-    const matchMovie = copyArr.findIndex((z: any) => z.id == id);
+    const matchMovie = watchLaterMoviesListStoraged.findIndex(
+      (z: any) => z.id == id,
+    );
 
     if (matchMovie !== -1) {
-      copyArr.splice(matchMovie, 1);
-      return setWatchLaterMoviesListStoraged([...copyArr]);
+      watchLaterMoviesListStoraged.splice(matchMovie, 1);
+      return setWatchLaterMoviesListStoraged([...watchLaterMoviesListStoraged]);
     } else
       return setWatchLaterMoviesListStoraged((prevArr: any) => [
         ...prevArr,
