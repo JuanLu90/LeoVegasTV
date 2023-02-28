@@ -1,16 +1,19 @@
 // UTILS
 import apiUtils from '../../../utils/apiUtils';
 
+// CONSTANTS
+import { urlMoviesList, urlMoviesListFilter } from './movies-list.constants';
+
 const getMoviesListService = (page: any): Promise<any> =>
   apiUtils.get({
-    url: `https://api.themoviedb.org/3/discover/movie?api_key=f1eb0fddb91524fcb1e67860576e0d66&page=${page}`,
+    url: `${urlMoviesList}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`,
   });
 
 export { getMoviesListService };
 
 const getMoviesListFilterService = (value: any, page: any): Promise<any> =>
   apiUtils.get({
-    url: `https://api.themoviedb.org/3/search/movie?api_key=f1eb0fddb91524fcb1e67860576e0d66&query=${value}&page=${page}`,
+    url: `${urlMoviesListFilter}?api_key=${process.env.REACT_APP_API_KEY}&query=${value}&page=${page}`,
   });
 
 export { getMoviesListFilterService };

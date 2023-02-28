@@ -5,6 +5,7 @@ import React from 'react';
 import Card from '../../components/card/card.component';
 import Loader from '../../components/loader/loader.component';
 import Filter from '../../components/filter/filter.component';
+import NoResults from '../../components/no-results/no-results.component';
 
 // HOOKS
 import useMoviesListHook from './hooks/movies-list.hook';
@@ -50,14 +51,16 @@ const MoviesList: React.FC = (): React.ReactElement => {
         setFilterInfo={setFilterInfo}
       />
 
-      {!isFetching && moviesList.length > 0 ? (
+      {isFetching ? (
+        <Loader />
+      ) : moviesList.length > 0 ? (
         <MoviesResultWrapper>
           {moviesList.map((movie: MovieListItemType) => (
             <Card key={movie.id} movie={movie} />
           ))}
         </MoviesResultWrapper>
       ) : (
-        <Loader />
+        <NoResults />
       )}
     </MoviesListWrapper>
   );

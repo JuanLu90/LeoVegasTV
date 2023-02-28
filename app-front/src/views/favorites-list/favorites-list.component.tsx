@@ -4,6 +4,7 @@ import React from 'react';
 // COMPONENTS
 import Card from '../../components/card/card.component';
 import Loader from '../../components/loader/loader.component';
+import NoResults from '../../components/no-results/no-results.component';
 
 // HOOKS
 import useMoviesListHook from '../movies-list/hooks/movies-list.hook';
@@ -26,14 +27,17 @@ const MoviesList: React.FC = (): React.ReactElement => {
   return (
     <FavoritesListWrapper>
       <FavoritesListTitle>Favorist List</FavoritesListTitle>
-      {!isFetching && favouriteMoviesListStoraged.length > 0 ? (
+
+      {isFetching ? (
+        <Loader />
+      ) : favouriteMoviesListStoraged.length > 0 ? (
         <FavoritesResultWrapper>
           {favouriteMoviesListStoraged.map((movie: any) => (
             <Card key={movie.id} movie={movie} />
           ))}
         </FavoritesResultWrapper>
       ) : (
-        <Loader />
+        <NoResults />
       )}
     </FavoritesListWrapper>
   );

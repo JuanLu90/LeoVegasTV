@@ -1,8 +1,8 @@
-// RERSOLVERS
+// SERVICES
 import {
-  getMoviesListResolver,
-  getMoviesListFilterResolver,
-} from '../resolvers/movies-list.resolver';
+  getMoviesListService,
+  getMoviesListFilterService,
+} from '../services/movies-list.services';
 
 // INTERFACES
 // eslint-disable-next-line no-unused-vars
@@ -18,23 +18,28 @@ const getMoviesListHandler = async ({
 }: any): Promise<any> => {
   setIsFetching(true);
 
-  const response = await getMoviesListResolver(page);
+  try {
+    const response = await getMoviesListService(page);
 
-  if (response) {
-    const { results, page, total_pages, total_results } = response;
+    if (response) {
+      const { results, page, total_pages, total_results } = response;
 
-    const moviesInfoFiltered = results.map((movie: any) => {
-      const { id, title, vote_average, release_date, poster_path, overview } =
-        movie;
+      const moviesInfoFiltered = results.map((movie: any) => {
+        const { id, title, vote_average, release_date, poster_path, overview } =
+          movie;
 
-      return { id, title, vote_average, release_date, poster_path, overview };
-    });
+        return { id, title, vote_average, release_date, poster_path, overview };
+      });
 
-    setFilterInfo({ page, total_pages, total_results, search: '' });
-    setMoviesList(moviesInfoFiltered);
-  } else {
-    console.error('Error on getMoviesListHandler()');
+      setFilterInfo({ page, total_pages, total_results, search: '' });
+      setMoviesList(moviesInfoFiltered);
+    } else {
+      console.error('Error on getMoviesListHandler()');
+    }
+  } catch (e) {
+    console.error(e);
   }
+
   setIsFetching(false);
 };
 
@@ -47,28 +52,32 @@ const getMoviesListFilterHandler = async ({
 }: any): Promise<any> => {
   setIsFetching(true);
 
-  const response = await getMoviesListFilterResolver(value, page);
+  try {
+    const response = await getMoviesListFilterService(value, page);
 
-  if (response) {
-    const { results, page, total_pages, total_results } = response;
+    if (response) {
+      const { results, page, total_pages, total_results } = response;
 
-    const moviesInfoFiltered = results.map((movie: any) => {
-      const { id, title, vote_average, release_date, poster_path, overview } =
-        movie;
+      const moviesInfoFiltered = results.map((movie: any) => {
+        const { id, title, vote_average, release_date, poster_path, overview } =
+          movie;
 
-      return { id, title, vote_average, release_date, poster_path, overview };
-    });
+        return { id, title, vote_average, release_date, poster_path, overview };
+      });
 
-    setFilterInfo((prevState: any) => ({
-      ...prevState,
-      page,
-      total_pages,
-      total_results,
-    }));
+      setFilterInfo((prevState: any) => ({
+        ...prevState,
+        page,
+        total_pages,
+        total_results,
+      }));
 
-    setMoviesList(moviesInfoFiltered);
-  } else {
-    console.error('Error on getMoviesListFilterHandler()');
+      setMoviesList(moviesInfoFiltered);
+    } else {
+      console.error('Error on getMoviesListFilterHandler()');
+    }
+  } catch (e) {
+    console.error(e);
   }
 
   setIsFetching(false);
